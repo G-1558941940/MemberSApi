@@ -21,6 +21,8 @@ public class SecondServiceImpl implements SecondService {
     @Override
     public List<Car_owner> Car_owners(Integer pageIndex, Integer pageSize) {
         Integer pageSize2 = (pageIndex - 1) * pageIndex;
+        System.out.println();
         return SecondMapper.Car_owner(pageIndex, pageSize2);
+
     }
 }
