@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--userMapper空间-->
+<mapper namespace="com.member.api.mappers.master.MasterMapper">
+    <resultMap id="MemberRegister" type="com.member.api.entity.Member">
+        <id property="id" column="id"/>
+        <result property="phone" column="phone"/>
+        <result property="wx_logo" column="wx_logo"/>
+        <result property="wx_nickname" column="wx_nickname"/>
+        <result property="wx_mini_open_id" column="wx_mini_open_id"/>
+        <result property="wx_mp_open_id" column="wx_mp_open_id"/>
+        <result property="wx_union_id" column="wx_union_id"/>
+        <result property="company_id" column="company_id"/>
+        <result property="register_time" column="register_time"/>
+        <result property="last_login_time" column="last_login_time"/>
+        <result property="last_login_ip" column="last_login_ip"/>
+        <result property="delete_flag" column="delete_flag"/>
+        <result property="pay_password" column=" pay_password"/>
+        <result property="city_code" column="city_code"/>
+        <result property="wallet_mny" column="wallet_mny"/>
+        <result property="isquickcharge" column="isquickcharge"/>
+        <result property="is_fast_charge" column="is_fast_charge"/>
+    </resultMap>
+
+    <insert id="MemberRegister" parameterType="com.member.api.entity.Member">
+         insert into member
+         (phone,wx_logo,wx_nickname,wx_mini_open_id,wx_union_id,company_id,
+         register_time,last_login_time,last_login_ip,delete_flag,pay_password,
+         city_code,wallet_mny,isquickcharge,is_fast_charge)
+         values(#{Member.phone},#{Member.wx_logo},#{Member.wx_nickname},#{Member.wx_mini_open_id},#{Member.wx_union_id},#{Member.company_id},
+         now(),#{Member.last_login_time},#{Member.last_login_ip},#{Member.delete_flag},#{Member.pay_password},#{Member.city_code},#{Member.wallet_mny},
+         #{Member.isquickcharge},#{Member.is_fast_charge})
+    </insert>
+    <update id="UpdateMember" parameterType="com.member.api.entity.Member">
+       update member
+       <set>
+
+           <if test="Member.wx_logo!=null and Member.wx_logo!=''">
+               wx_logo=#{Member.wx_logo}
+           </if>
+           <if test="Member.wx_nickname!=null and Member.wx_nickname!=''">
+               ,wx_nickname=#{Member.wx_nickname}
+           </if>
+           <if test="Member.wx_mini_open_id!=null and Member.wx_mini_open_id!=''">
+               ,wx_mini_open_id=#{Member.wx_mini_open_id}
+           </if>
+               ,wx_union_id=#{Member.wx_union_id},
+           <if test="Member.company_id!=null and Member.company_id!=''">
+               ,company_id=#{Member.company_id}
+           </if>
+           <if test="Member.register_time!=null andMember.register_time!=''">
+               ,register_time=#{Member.register_time}
+           </if>
+           ,last_login_time=#{Member.last_login_time},last_login_ip=#{Member.last_login_ip},
+           delete_flag=#{Member.delete_flag},pay_password=#{Member.pay_password},city_code=#{Member.city_code},
+           <if test="Member.wallet_mny!=null and Member.wallet.mny!=''">
+               ,wallet_mny=#{Member.wallet_mny}
+           </if>
+           ,isquickcharge=#{Member.isquickcharge},is_fast_charge=#{Member.is_fast_charge}
+
+       </set>
+        <where>
+         <if test="Member.phone!=null and Member.phone!=''">
+         phone=#{Member.phone}
+         </if>
+         </where>
+     </update>
+    <update id="UpdatePassWord" parameterType="string">
+        <!-- update member
+         <set>
+             <if test="pay_password!=null and pay_password!=''">
+          pay_password=#{pay_password}
+         </if>
+         </set>
+         <where>
+
+             <if test="phone!=null and phone !=''">
+                 phone=#{phone}
+             </if>
+
+
+         </where>-->
+        update member set pay_password=#{pay_password} where phone=#{phone}
+    </update>
+    <delete id="DeleteMember" parameterType="com.member.api.entity.Member">
+        delete member
+        <where>
+        id=#{Member.id}
+        </where>
+    </delete>
+    <select id="VerifyMember" resultType="com.member.api.entity.Member" resultMap="MemberRegister">
+        select * from member
+        <where>
+            <if test="Member.phone !=null and Member.phone!=''">
+           phone=#{Member.phone}
+         </if>
+        </where>
+    </select>
+</mapper>
+        <!--#{id},#{wx_logo},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{}-->
