@@ -15,11 +15,12 @@ import java.util.List;
  **/
 @Service
 public class InparkingServiceImpl implements InparkingService {
-    private final InparkingMapper inparkingMapper;
 
+    private final InparkingMapper inparkingMapper;
     public InparkingServiceImpl(InparkingMapper inparkingMapper) {
         this.inparkingMapper = inparkingMapper;
     }
+
     @Override
     public List<MemberEntryRecordDTO> getMemberEntryRecord(Integer carOwnerId, Integer pageIndex, Integer pageSize) {
         int pageIndex2 = (pageIndex - 1) * pageSize;
