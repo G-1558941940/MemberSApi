@@ -2,20 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--userMapper空间-->
 <mapper namespace="com.member.api.mappers.second.SecondMapper">
-<resultMap id="OutParkingMap" type="com.member.api.entity.OutParking">
-    <id column=" outparking_id" property="outparking_id" />
-    <result column="cardserial" property="cardserial"/>
-    <result column="carnumber" property="carnumber"/>
-    <result column="outtime" property="outtime"/>
-    <result column="outtype" property="outtype"/>
-    <result column="carnumberout" property="carnumberout"/>
-    <result column="intime" property="intime"/>
-    <result column="addtime" property="addtime"/>
-    <result column="parking_id" property="parking_id"/>
-</resultMap>
+    <resultMap id="OutParkingMap" type="com.member.api.entity.OutParking">
+        <id column="outparking_id" property="outparking_id"/>
+        <result column="cardserial" property="cardserial"/>
+        <result column="carnumber" property="carnumber"/>
+        <result column="outtime" property="outtime"/>
+        <result column="outtype" property="outtype"/>
+        <result column="carnumberout" property="carnumberout"/>
+        <result column="intime" property="intime"/>
+        <result column="addtime" property="addtime"/>
+        <result column="parking_id" property="parking_id"/>
+    </resultMap>
+<!--    <resultMap id="RecordMap" type="">-->
+<!-- -->
+<!--    </resultMap>-->
     <select id="Car_owner" resultType="com.member.api.entity.Car_owner">
-        SELECT  * FROM car_owner limit #{pageSize} offset #{pageIndex}
+        SELECT  * FROM car_owner limit #{pageSize} offset #{Size}
 </select>
+
+    <select id="ParkRecord" resultMap="OutParkingMap">
+        SELECT * FROM  outparking as p LEFT JOIN car_owner_car as c on p.carnumber=c.carnumber  WHERE c.car_owner_id=#{car_owner_id} limit #{pageSize} offset #{Size}
+
+    </select>
 
 
 </mapper>
