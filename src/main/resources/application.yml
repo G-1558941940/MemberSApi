@@ -6,24 +6,15 @@ server:
 spring:
   # master 数据源配置
   master:
-   datasource:
-     url: jdbc:postgresql://localhost:5432/city_park
-     username: postgres
-     password: sorft
-     driver-class-name: org.postgresql.Driver
+    datasource:
+      url: jdbc:postgresql://localhost:5432/city_park
+      username: postgres
+      password: root
+      driver-class-name: org.postgresql.Driver
       #second 数据源配置
   second:
-   datasource:
-     url: jdbc:postgresql://localhost:5432/offroad_parking
-     username: postgres
-     password: sorft
-     driver-class-name: org.postgresql.Driver
-
-logging:
-  level:
-    com.view.demo: debug
-
-  file:
-    name: springboot.log
-
-
+    datasource:
+      url: jdbc:postgresql://localhost:5432/offroad_parking
+      username: postgres
+      password: root
+      driver-class-name: org.postgresql.Driver
