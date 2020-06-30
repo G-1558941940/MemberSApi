@@ -15,9 +15,6 @@ public class SecondServiceImpl implements SecondService {
     @Autowired
     private MasterMapper MasterMapper;
 
-    @Override
-    public List<OutParking> OutParkingRecord() {
-        return SecondMapper.OutParkingList();
-    }
+
 
 }

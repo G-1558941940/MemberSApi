@@ -56,10 +56,6 @@ public class MemberController {
     public JSONObject DeleteMember(Member member){
         return MemberService.DeleteMember(member);
     }
-    @ApiOperation(value="出场记录", httpMethod = "POST")
-    @PostMapping("/MemberOutParking")
-    public List<OutParking> MemberOutParking(){
-        return SecondService.OutParkingRecord();
-    }
+
 
 }

@@ -13,8 +13,10 @@
     <result column="addtime" property="addtime"/>
     <result column="parking_id" property="parking_id"/>
 </resultMap>
+    <select id="Car_owner" resultType="com.member.api.entity.Car_owner">
+        SELECT  * FROM car_owner
 
-    <select id="MemberPhone" resultType="java.lang.String">
-        SELECT pohone,wx_nickname FROM member
     </select>
+
+
 </mapper>
