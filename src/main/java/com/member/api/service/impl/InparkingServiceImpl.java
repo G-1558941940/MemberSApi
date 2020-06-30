@@ -1,4 +1,4 @@
-package com.member.api.mappers.second.impl;
+package com.member.api.service.impl;
 
 import com.member.api.dto.MemberEntryRecordDTO;
 import com.member.api.mappers.second.InparkingMapper;
