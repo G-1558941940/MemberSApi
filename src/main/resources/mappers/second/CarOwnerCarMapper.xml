@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.member.api.mappers.second.CarOwnerCarMapper">
+    <select id="selectPersonalVehicles" resultType="com.member.api.dto.PersonalVehiclesDTO">
+        select car.carnumber as carnumber, car."carColor" as carColor, car.carmode_nane as carmodeName
+        from offroad_parking.public.member_car_ref ref
+                     left join offroad_parking.public.car_owner_car car on ref.car_id = car.car_id
+        where ref.member_id = #{memberId}
+    </select>
+</mapper>

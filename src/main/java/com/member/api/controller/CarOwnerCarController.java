@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import java.util.List;
 
 /**
@@ -28,10 +29,10 @@ public class CarOwnerCarController {
      * 查询我的车辆信息
      */
     @GetMapping("/getPersonalVehicles")
-    public MyResult<List<PersonalVehiclesDTO>> getPersonalVehicles(Integer carOwnerId, Integer pageIndex, Integer pageSize) {
+    public MyResult<List<PersonalVehiclesDTO>> getPersonalVehicles(Integer memberId) {
         MyResult<List<PersonalVehiclesDTO>> myResult;
         try {
-            List<PersonalVehiclesDTO> personalVehicles = carOwnerCarService.getPersonalVehicles(carOwnerId, pageIndex, pageSize);
+            List<PersonalVehiclesDTO> personalVehicles = carOwnerCarService.getPersonalVehicles(memberId);
             myResult = new MyResult<>(0, "获取个人车辆成功", personalVehicles);
         } catch (Exception e) {
             e.printStackTrace();

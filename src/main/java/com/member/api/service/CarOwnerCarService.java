@@ -13,12 +13,8 @@ import java.util.List;
 public interface CarOwnerCarService {
     /**
      * 查询我的车辆信息
-     * @param carOwnerId
-     * @param pageIndex
-     * @param pageSize
-     * @return
+     * @param memberId 会员id
+     * @return 车辆信息
      */
-    List<PersonalVehiclesDTO> getPersonalVehicles(Integer carOwnerId,
-                                                  Integer pageIndex,
-                                                  Integer pageSize);
+    List<PersonalVehiclesDTO> getPersonalVehicles(Integer memberId);
 }

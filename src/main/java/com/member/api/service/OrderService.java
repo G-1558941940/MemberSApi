@@ -17,5 +17,5 @@ public interface OrderService {
      * @param id 会员id
      * @return 充值记录
      */
-    List<WalletTopUpDTO> getWalletRechargeRecord(Integer id);
+    List<WalletTopUpDTO> getWalletRechargeRecord(Integer id,Integer pageIndex, Integer pageSize);
 }

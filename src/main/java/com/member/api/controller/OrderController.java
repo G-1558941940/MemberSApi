@@ -30,10 +30,10 @@ public class OrderController {
      * @return 记录
      */
     @GetMapping("/getWalletRechargeRecord")
-    public MyResult<List<WalletTopUpDTO>> getWalletRechargeRecord(Integer id){
+    public MyResult<List<WalletTopUpDTO>> getWalletRechargeRecord(Integer id,Integer pageIndex, Integer pageSize){
         MyResult<List<WalletTopUpDTO>> myResult;
         try {
-            List<WalletTopUpDTO> walletRechargeRecord = orderService.getWalletRechargeRecord(id);
+            List<WalletTopUpDTO> walletRechargeRecord = orderService.getWalletRechargeRecord(id,pageIndex,pageSize);
             myResult = new MyResult<>(0, "获取会员钱包充值记录成功", walletRechargeRecord);
         } catch (Exception e) {
             e.printStackTrace();
