@@ -5,8 +5,7 @@
 
     <select id="findCarNumber" resultType="java.lang.String">
         SELECT
-	member_id,
-	carnumber
+ carnumber
 FROM
 	member_car_ref
 	AS M INNER JOIN car_owner_car AS C ON M."car_id" = C.car_id

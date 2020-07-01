@@ -17,11 +17,14 @@ public class OutparkingServiceimpl implements OutparkingService {
     @Override
     public List<OutParking> OutParkingRecord(Integer Member_id, Integer pageIndex, Integer pageSize) {
         List<String> list=FindCarNumberMapper.findCarNumber(Member_id);
+        //System.out.println("list = " + list);
         List<OutParking> listout = null;
         for (int i=0; i< list.size();i++) {
+            //System.out.println(list.get(i));
          listout= OutParkingMapper.OutParkRecord(list.get(i),pageIndex,pageSize);
+            System.out.println("listout = " + listout);
         }
-        System.out.println("listout = " + listout);
+
         return listout;
     }
 }

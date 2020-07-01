@@ -42,4 +42,5 @@ public interface MasterMapper {
      * @return
      */
      Integer DeleteMember(@Param("member") Member member);
+     List<Member> FindMember(@Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
 }

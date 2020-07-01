@@ -15,7 +15,7 @@
     </resultMap>
 
     <select id="OutParkRecord" resultMap="OutParkingMap">
-        SELECT * FROM  outparking as o LEFT JOIN car_owner_car as c on o.carnumber=c.carnumber  WHERE o.carnumber=#{CarNumber} limit #{pageSize} offset #{Size}
+        SELECT o.cardserial,o.outparking_id,o.carnumber,o.outtime,o.outtype,o.carnumberout,o.intime,o.addtime,o.parking_id FROM  outparking as o LEFT JOIN car_owner_car as c on o.carnumber=c.carnumber  WHERE o.carnumber=#{carnumber} limit #{pageSize} offset #{Size}
     </select>
 
 

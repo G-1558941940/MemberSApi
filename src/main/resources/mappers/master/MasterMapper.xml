@@ -96,5 +96,8 @@
          </if>
         </where>
     </select>
+    <select id="FindMember" resultMap="MemberRegister">
+        SELECT * FROM Member limit #{pageSize} offset #{Size}
+    </select>
 </mapper>
         <!--#{id},#{wx_logo},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{}-->

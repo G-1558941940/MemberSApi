@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.member.api.entity.Car_owner;
 import com.member.api.entity.Member;
 import com.member.api.entity.OutParking;
+import com.member.api.service.FindMemberService;
 import com.member.api.service.MemberService;
 import com.member.api.service.SecondService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -25,7 +26,8 @@ public class MemberController {
     private MemberService MemberService;
     @Autowired
     private SecondService SecondService;
-
+    @Autowired
+   private  FindMemberService FindMemberService;
     @ApiOperation(value = "会员的支付密码的赋予", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pay_password", value = "支付密码"),
@@ -68,12 +70,11 @@ public class MemberController {
             @ApiImplicitParam(name = "pageSize", value = "每页长度"),
             @ApiImplicitParam(name = "pageIndex", value = "页码")
     })
-    @PostMapping("/Car_owners")
-    public List<Car_owner> Car_owners(Integer pageIndex, Integer pageSize) {
+    @PostMapping("/MemberFind")
+    public List<Member> Car_owners(Integer pageIndex, Integer pageSize) {
 
 
-        return SecondService.Car_owners(pageIndex, pageSize);
-
+        return FindMemberService.FindMember(pageIndex,pageSize);
     }
 
 

@@ -9,10 +9,10 @@ import java.util.List;
 public interface OutParkingMapper {
 
     /**查询该会员的出场记录
-     * @param CarNumber
+     * @param carnumber
      * @param pageSize
      * @param Size
      * @return
      */
-    List<OutParking> OutParkRecord(@Param("CarNumber") String CarNumber, @Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
+    List<OutParking> OutParkRecord(@Param("carnumber") String carnumber, @Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
 }
