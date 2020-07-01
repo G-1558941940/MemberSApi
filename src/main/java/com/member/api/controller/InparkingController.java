@@ -25,7 +25,7 @@ public class InparkingController {
     }
 
     /**
-     * 获取会员列表
+     * 获取会员的进场记录
      * @param carOwnerId 车主id   当车主id = null  的时候将查询全部
      * @param pageIndex 页码
      * @param pageSize 显示数量
