@@ -15,6 +15,7 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MasterMapper MemberMapper;
 
+
     @Override
     public JSONObject registerService(Member member) {
         System.out.println("member =2 " + member);
@@ -92,4 +93,6 @@ public class MemberServiceImpl implements MemberService {
         }
         return pase;
     }
+
+
 }

@@ -5,7 +5,6 @@ import com.member.api.entity.OutParking;
 import com.member.api.entity.PayRecord;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
-import sun.java2d.pipe.OutlineTextRenderer;
 
 import java.util.List;
 

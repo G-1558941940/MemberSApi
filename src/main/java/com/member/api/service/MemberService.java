@@ -9,4 +9,6 @@ public interface MemberService {
     public JSONObject UpdateMember(Member member);
     public JSONObject UpdatePassword(String pay_password,String phone);
     public JSONObject DeleteMember(Member member);
+
+
 }
