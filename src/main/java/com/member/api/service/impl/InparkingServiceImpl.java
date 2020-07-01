@@ -22,8 +22,7 @@ public class InparkingServiceImpl implements InparkingService {
     }
 
     @Override
-    public List<MemberEntryRecordDTO> getMemberEntryRecord(Integer carOwnerId, Integer pageIndex, Integer pageSize) {
-        int pageIndex2 = (pageIndex - 1) * pageSize;
-        return inparkingMapper.selectMemberEntryRecord(carOwnerId, pageIndex2, pageSize);
+    public List<MemberEntryRecordDTO> getMemberEntryRecord(Integer memberId) {
+        return inparkingMapper.selectMemberEntryRecord(memberId);
     }
 }

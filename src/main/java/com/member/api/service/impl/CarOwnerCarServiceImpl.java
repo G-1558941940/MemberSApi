@@ -22,11 +22,9 @@ public class CarOwnerCarServiceImpl implements CarOwnerCarService {
     }
 
     @Override
-    public List<PersonalVehiclesDTO> getPersonalVehicles(Integer carOwnerId, Integer pageIndex, Integer pageSize) {
-        int pageIndex2 = (pageIndex - 1) * pageSize;
-        List<PersonalVehiclesDTO> personalVehiclesDTOS = carOwnerCarMapper.selectPersonalVehicles(carOwnerId, pageIndex2, pageSize);
+    public List<PersonalVehiclesDTO> getPersonalVehicles(Integer memberId) {
+        List<PersonalVehiclesDTO> personalVehiclesDTOS = carOwnerCarMapper.selectPersonalVehicles(memberId);
         for (PersonalVehiclesDTO personalVehiclesDTO : personalVehiclesDTOS) {
-
             String carmodeName = personalVehiclesDTO.getCarmodeName();
             String carmodeName2;
             switch (carmodeName){
@@ -43,7 +41,6 @@ public class CarOwnerCarServiceImpl implements CarOwnerCarService {
                 default:
                     throw new IllegalStateException("Unexpected value: " + carmodeName);
             }
-
             personalVehiclesDTO.setCarmodeName(carmodeName2);
         }
         return personalVehiclesDTOS;

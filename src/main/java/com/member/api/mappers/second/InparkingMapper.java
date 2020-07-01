@@ -6,28 +6,34 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
+/**
+ * InparkingMapper
+ * @auth panpan gao
+ */
 public interface InparkingMapper {
     /**
      * 查询会员的进场记录
-     * @param carOwnerId 车主id
-     * @param pageIndex 页码
-     * @param pageSize 显示数量
+     * @param memberId 会员id
      * @return 进场记录
      */
-    @Select("<script>" +
-            "select " +
-            "inparking_id AS inparkingId,carnumber,intime,park.name as parkName " +
-            "from inparking inpark " +
-            "left join parking park ON inpark.parking_id = park.id " +
-            "<if test='carOwnerId != null'>" +
-            "where car_owner_id = #{carOwnerId} " +
-            "</if> " +
-            "order by intime desc " +
-            "limit #{pageSize} offset #{pageIndex}" +
-            "</script>")
+    @Select(
+            "SELECT " +
+            "inparking_id inparkingId,carnumber,intime,p.name parkName " +
+            "FROM " +
+            "inparking inpark " +
+                    "left join parking p on inpark.parking_id = p.id " +
+            "WHERE " +
+            "inpark.carnumber IN (" +
+                "SELECT " +
+                "car.carnumber AS carnumber " +
+                "FROM " +
+                "member_car_ref \"ref\" " +
+                "LEFT JOIN car_owner_car car ON \"ref\".car_id = car.car_id " +
+                "WHERE " +
+                "\"ref\".member_id = #{memberId}" +
+            ")"
+    )
     List<MemberEntryRecordDTO> selectMemberEntryRecord(
-            @Param("carOwnerId") Integer carOwnerId,
-            @Param("pageIndex")  Integer pageIndex,
-            @Param("pageSize")   Integer pageSize
+           @Param("memberId") Integer memberId
     );
 }

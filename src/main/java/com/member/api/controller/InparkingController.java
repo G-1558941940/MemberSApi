@@ -26,19 +26,17 @@ public class InparkingController {
 
     /**
      * 获取会员的进场记录
-     * @param carOwnerId 车主id   当车主id = null  的时候将查询全部
-     * @param pageIndex 页码
-     * @param pageSize 显示数量
+     * @param memberId 会员id
      */
     @GetMapping("/getMemberEntryRecord")
-    public MyResult<List<MemberEntryRecordDTO>> getMemberEntryRecord(Integer carOwnerId,Integer pageIndex, Integer pageSize){
+    public MyResult<List<MemberEntryRecordDTO>> getMemberEntryRecord(Integer memberId){
         MyResult<List<MemberEntryRecordDTO>> myResult;
         try {
-            List<MemberEntryRecordDTO> memberEntryRecord = inparkingService.getMemberEntryRecord(carOwnerId, pageIndex, pageSize);
-            myResult = new MyResult<>(0, "获取会员列表成功", memberEntryRecord);
+            List<MemberEntryRecordDTO> memberEntryRecord = inparkingService.getMemberEntryRecord(memberId);
+            myResult = new MyResult<>(0, "获取进场记录成功", memberEntryRecord);
         } catch (Exception e) {
             e.printStackTrace();
-            myResult = new MyResult<>(1, "获取会员列表失败", null);
+            myResult = new MyResult<>(1, "获取进场记录失败", null);
         }
         return myResult;
     }
