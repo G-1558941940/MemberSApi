@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--userMapper空间-->
-<mapper namespace="com.member.api.mappers.second.SecondMapper">
+<mapper namespace="com.member.api.mappers.second.OutParkingMapper">
     <resultMap id="OutParkingMap" type="com.member.api.entity.OutParking">
         <id column="outparking_id" property="outparking_id"/>
         <result column="cardserial" property="cardserial"/>
@@ -15,7 +15,7 @@
     </resultMap>
 
     <select id="OutParkRecord" resultMap="OutParkingMap">
-        SELECT * FROM  outparking as o LEFT JOIN car_owner_car as c on o.carnumber=c.carnumber  WHERE o.carnumber=#{carnumber} limit #{pageSize} offset #{Size}
+        SELECT * FROM  outparking as o LEFT JOIN car_owner_car as c on o.carnumber=c.carnumber  WHERE o.carnumber=#{CarNumber} limit #{pageSize} offset #{Size}
     </select>
 
 

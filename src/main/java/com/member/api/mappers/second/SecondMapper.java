@@ -20,13 +20,5 @@ public interface SecondMapper {
      */
     List<Car_owner> Car_owner(@Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
 
-    /**查询该会员的出场记录
-     * @param carnumber
-     * @param pageSize
-     * @param Size
-     * @return
-     */
-    List<OutParking> OutParkRecord(@Param("carnumber") Integer carnumber, @Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
-
 
 }
