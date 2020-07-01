@@ -81,21 +81,6 @@ public class MemberController {
     public JSONObject MemberFindCount(){
         return FindMemberService.FindMemberCount();
     }
-    /*
-    @ApiOperation(value = "车主停车记录信息", httpMethod = "POST")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name="car_owner_id",value = "车主ID"),
-            @ApiImplicitParam(name = "pageSize", value = "每页长度"),
-            @ApiImplicitParam(name = "pageIndex", value = "页码")
-    })
-    @PostMapping("/parkingRecord")
-    public List<OutParking> parkingRecord(Integer car_owner_id,Integer pageIndex, Integer pageSize) {
-        System.out.println("car_owner_id = " + car_owner_id);
-        System.out.println("pageIndex = " + pageIndex);
-        System.out.println("pageSize = " + pageSize);
-       //System.out.println(SecondService.parkingRecord(car_owner_id,pageIndex,pageSize));
-        return SecondService.parkingRecord(car_owner_id,pageIndex,pageSize);
-    }
-*/
+
 
 }
