@@ -13,6 +13,20 @@
         <result column="addtime" property="addtime"/>
         <result column="parking_id" property="parking_id"/>
     </resultMap>
+    <resultMap id="PayRecordMap" type="com.member.api.entity.PayRecord">
+        <id column="id" property="id"/>
+        <result  column=" carnumber" property="carnumber"/>
+        <result column="intime" property="intime" />
+        <result column="outtime" property="outtime"/>
+        <result column="parktime" property="parktime" />
+        <result column="payamount" property="payamount" />
+        <result column="paidamount" property="paidamount" />
+        <result column="paymenttype" property="paymenttype"/>
+        <result column="chargetime" property="chargetime"/>
+        <result column="close_optername" property="close_optername"/>
+        <result column="close_accountno" property="close_accountno"/>
+        <result column="parking_name" property="parking_name"/>
+    </resultMap>
 <!--    <resultMap id="RecordMap" type="">-->
 <!-- -->
 <!--    </resultMap>-->
@@ -20,10 +34,13 @@
         SELECT  * FROM car_owner limit #{pageSize} offset #{Size}
 </select>
 
-    <select id="ParkRecord" resultMap="OutParkingMap">
+    <select id="OutParkRecord" resultMap="OutParkingMap">
         SELECT * FROM  outparking as p LEFT JOIN car_owner_car as c on p.carnumber=c.carnumber  WHERE c.car_owner_id=#{car_owner_id} limit #{pageSize} offset #{Size}
 
     </select>
+
+
+
 
 
 </mapper>

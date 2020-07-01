@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--userMapper空间-->
+<mapper namespace="com.member.api.mappers.second.SecondMapper">
+    <resultMap id="OutParkingMap" type="com.member.api.entity.OutParking">
+        <id column="outparking_id" property="outparking_id"/>
+        <result column="cardserial" property="cardserial"/>
+        <result column="carnumber" property="carnumber"/>
+        <result column="outtime" property="outtime"/>
+        <result column="outtype" property="outtype"/>
+        <result column="carnumberout" property="carnumberout"/>
+        <result column="intime" property="intime"/>
+        <result column="addtime" property="addtime"/>
+        <result column="parking_id" property="parking_id"/>
+    </resultMap>
+
+    <select id="OutParkRecord" resultMap="OutParkingMap">
+        SELECT * FROM  outparking as o LEFT JOIN car_owner_car as c on o.carnumber=c.carnumber  WHERE o.carnumber=#{carnumber} limit #{pageSize} offset #{Size}
+    </select>
+
+
+
+
+
+</mapper>

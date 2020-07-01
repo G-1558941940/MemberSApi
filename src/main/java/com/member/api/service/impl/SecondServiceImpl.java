@@ -25,11 +25,12 @@ public class SecondServiceImpl implements SecondService {
         return SecondMapper.Car_owner(pageSize,size);
 
     }
-
+/*
     @Override
     public List<OutParking> parkingRecord(Integer Car_owner_id, Integer pageIndex, Integer pageSize) {
         Integer size = (pageIndex - 1) * pageSize;
         System.out.println("size = " + size);
         return SecondMapper.ParkRecord(Car_owner_id,pageSize,size);
     }
+    */
 }
