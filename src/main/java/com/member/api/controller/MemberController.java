@@ -1,20 +1,19 @@
 package com.member.api.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.member.api.dto.MemberEntryRecordDTO;
 import com.member.api.entity.Car_owner;
 import com.member.api.entity.Member;
-import com.member.api.entity.MyResult;
 import com.member.api.entity.OutParking;
 import com.member.api.service.MemberService;
 import com.member.api.service.SecondService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -76,6 +75,9 @@ public class MemberController {
         return SecondService.Car_owners(pageIndex, pageSize);
 
     }
+
+
+    /*
     @ApiOperation(value = "车主停车记录信息", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name="car_owner_id",value = "车主ID"),
@@ -90,6 +92,6 @@ public class MemberController {
        //System.out.println(SecondService.parkingRecord(car_owner_id,pageIndex,pageSize));
         return SecondService.parkingRecord(car_owner_id,pageIndex,pageSize);
     }
-
+*/
 
 }

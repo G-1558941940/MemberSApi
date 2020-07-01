@@ -9,6 +9,7 @@ import java.util.List;
 @Component
 public interface MasterMapper {
 
+
     /**
      * 会员注册
      * @param Member
