@@ -4,7 +4,6 @@ import com.member.api.entity.Car_owner;
 import com.member.api.entity.OutParking;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
-import sun.java2d.pipe.OutlineTextRenderer;
 
 import java.util.List;
 
