@@ -99,5 +99,8 @@
     <select id="FindMember" resultMap="MemberRegister">
         SELECT * FROM Member limit #{pageSize} offset #{Size}
     </select>
+    <select id="FindMemberCount" resultType="java.lang.Integer">
+        SELECT  COUNT(1) FROM Member
+        </select>
 </mapper>
         <!--#{id},#{wx_logo},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{}-->

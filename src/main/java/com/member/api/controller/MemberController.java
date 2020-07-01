@@ -71,13 +71,16 @@ public class MemberController {
             @ApiImplicitParam(name = "pageIndex", value = "页码")
     })
     @PostMapping("/MemberFind")
-    public List<Member> Car_owners(Integer pageIndex, Integer pageSize) {
+    public List<Member> MemberFind(Integer pageIndex, Integer pageSize) {
 
 
         return FindMemberService.FindMember(pageIndex,pageSize);
     }
-
-
+    @ApiOperation(value = "会员信息行数", httpMethod = "POST")
+    @PostMapping("/MemberFindCount")
+    public JSONObject MemberFindCount(){
+        return FindMemberService.FindMemberCount();
+    }
     /*
     @ApiOperation(value = "车主停车记录信息", httpMethod = "POST")
     @ApiImplicitParams({
