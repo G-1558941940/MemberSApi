@@ -23,11 +23,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<WalletTopUpDTO> getWalletRechargeRecord(Integer id) {
-        List<WalletTopUpDTO> walletTopUpDTOS = orderMapper.selectWalletRechargeRecord(id);
+    public List<WalletTopUpDTO> getWalletRechargeRecord(Integer id, Integer pageIndex, Integer pageSize) {
+        pageIndex = (pageIndex - 1) * pageSize;
+        List<WalletTopUpDTO> walletTopUpDTOS = orderMapper.selectWalletRechargeRecord(id,pageIndex,pageSize);
         for (WalletTopUpDTO walletTopUpDTO : walletTopUpDTOS) {
-            BigDecimal rechargeAmount = walletTopUpDTO.getRechargeAmount().divide(BigDecimal.valueOf(100),2,BigDecimal.ROUND_HALF_DOWN);
-            BigDecimal balanceAfterRecharge = walletTopUpDTO.getBalanceAfterRecharge().divide(BigDecimal.valueOf(100),2,BigDecimal.ROUND_HALF_DOWN);
+            BigDecimal rechargeAmount = walletTopUpDTO.getRechargeAmount().divide(BigDecimal.valueOf(100), 2, BigDecimal.ROUND_HALF_DOWN);
+            BigDecimal balanceAfterRecharge = walletTopUpDTO.getBalanceAfterRecharge().divide(BigDecimal.valueOf(100), 2, BigDecimal.ROUND_HALF_DOWN);
             walletTopUpDTO.setRechargeAmount(rechargeAmount);
             walletTopUpDTO.setBalanceAfterRecharge(balanceAfterRecharge);
         }

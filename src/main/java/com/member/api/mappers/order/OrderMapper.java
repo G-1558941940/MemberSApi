@@ -1,6 +1,7 @@
 package com.member.api.mappers.order;
 
 import com.member.api.dto.WalletTopUpDTO;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 public interface OrderMapper {
     /**
      * 获取会员的钱包充值记录
+     *
      * @param id 会员id
      * @return 充值记录
      */
@@ -26,6 +28,10 @@ public interface OrderMapper {
             "FROM " +
             "member_wallet_log wallet " +
             "LEFT JOIN parking_recharge_order \"order\" on wallet.recharge_order_id = \"order\".id " +
-            "where \"order\".member_id = #{id} ")
-    List<WalletTopUpDTO> selectWalletRechargeRecord(Integer id);
+            "where \"order\".member_id = #{id} " +
+            "limit #{pageSize} offset #{pageIndex}")
+    List<WalletTopUpDTO> selectWalletRechargeRecord(
+            @Param("id") Integer id,
+            @Param("pageIndex") Integer pageIndex,
+            @Param("pageSize") Integer pageSize);
 }
