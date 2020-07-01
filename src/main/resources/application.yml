@@ -18,3 +18,10 @@ spring:
       username: postgres
       password: sorft
       driver-class-name: org.postgresql.Driver
+
+  order:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/order_manager
+      username: postgres
+      password: sorft
+      driver-class-name: org.postgresql.Driver

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--userMapper空间-->
+<mapper namespace="com.member.api.mappers.second.FindCarNumberMapper">
+
+    <select id="findCarNumber" resultType="java.lang.String">
+        SELECT
+	member_id,
+	carnumber
+FROM
+	member_car_ref
+	AS M INNER JOIN car_owner_car AS C ON M."car_id" = C.car_id
+WHERE
+	M.member_id = #{Member_id}
+
+    </select>
+</mapper>

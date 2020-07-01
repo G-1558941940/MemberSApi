@@ -34,10 +34,7 @@
         SELECT  * FROM car_owner limit #{pageSize} offset #{Size}
 </select>
 
-    <select id="OutParkRecord" resultMap="OutParkingMap">
-        SELECT * FROM  outparking as p LEFT JOIN car_owner_car as c on p.carnumber=c.carnumber  WHERE c.car_owner_id=#{car_owner_id} limit #{pageSize} offset #{Size}
 
-    </select>
 
 
 

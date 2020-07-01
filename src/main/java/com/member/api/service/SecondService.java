@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface SecondService {
 public List<Car_owner> Car_owners(Integer pageIndex,Integer pageSize);
-//public List<OutParking> parkingRecord(Integer Car_owner_id,Integer pageIndex,Integer pageSize);
 
 }
