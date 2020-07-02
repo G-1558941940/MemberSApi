@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--userMapper空间-->
+<mapper namespace="com.member.api.mappers.second.MonthCarMapper">
+
+    <select id="FindMonthCar" resultType="com.member.api.entity.MontCar">
+        SELECT
+  mr.member_id,
+	c.carnumber,
+	c.carmode_nane,
+	mc.time_begin,
+	mc.time_end,
+	mc.create_time
+FROM
+	month_card_car AS mc
+	LEFT JOIN car_owner_car AS C ON mc.car_id = C.car_id
+	LEFT JOIN member_car_ref AS mr ON mc.car_id = mr.car_id
+	WHERE mr.member_id IS NOT NULL
+	AND mr.member_id=#{Member_id}
+    </select>
+</mapper>

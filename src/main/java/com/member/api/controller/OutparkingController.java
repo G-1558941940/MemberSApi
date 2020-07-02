@@ -26,7 +26,7 @@ private OutparkingService OutparkingService;
             @ApiImplicitParam(name = "pageIndex", value = "页码")
     })
     @PostMapping("/OutparkingRecord")
-    public List<OutParking> parkingRecord(Integer Member_id, Integer pageIndex, Integer pageSize) {
+    public List<OutParking> OutparkingRecord(Integer Member_id, Integer pageIndex, Integer pageSize) {
         System.out.println("Member_id = " + Member_id);
         System.out.println("pageIndex = " + pageIndex);
         System.out.println("pageSize = " + pageSize);
