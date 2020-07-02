@@ -14,8 +14,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class OutparkingServiceimpl implements OutparkingService {
-    @Autowired
-    private FindCarNumberMapper FindCarNumberMapper;
+
     @Autowired
     private OutParkingMapper OutParkingMapper;
 
@@ -32,6 +31,16 @@ public class OutparkingServiceimpl implements OutparkingService {
 
 
         return listout;
+    }
+
+    @Override
+    public List<OutParking> FindOutParkingRecord(Integer pageIndex, Integer pageSize) {
+        Integer Size = pageSize * (pageIndex - 1); // limit ? offset pageindex
+        log.info("出场记录每页长度->"+pageSize);
+        log.info("出场记录跳过长度->"+Size);
+         List<OutParking> listOut=OutParkingMapper.FindAllOutParkRecord(pageSize,Size);
+        log.info("所有出场记录->"+listOut);
+         return listOut;
     }
 
 
