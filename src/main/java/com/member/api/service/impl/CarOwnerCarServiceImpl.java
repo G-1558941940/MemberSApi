@@ -25,9 +25,21 @@ public class CarOwnerCarServiceImpl implements CarOwnerCarService {
     public List<PersonalVehiclesDTO> getPersonalVehicles(Integer memberId) {
         List<PersonalVehiclesDTO> personalVehiclesDTOS = carOwnerCarMapper.selectPersonalVehicles(memberId);
         for (PersonalVehiclesDTO personalVehiclesDTO : personalVehiclesDTOS) {
+            Integer monId = personalVehiclesDTO.getMonId(); // 月卡
+            Integer whiteId = personalVehiclesDTO.getWhiteId(); // 白名单
+            String vehicleType;
+            if (monId != null) {
+                vehicleType = "月租车";
+            } else if (whiteId != null) {
+                vehicleType = "免费车";
+            } else {
+                vehicleType = "临停车";
+            }
+            personalVehiclesDTO.setVehicleType(vehicleType);
+
             String carmodeName = personalVehiclesDTO.getCarmodeName();
             String carmodeName2;
-            switch (carmodeName){
+            switch (carmodeName) {
                 case "面包车":
                 case "轿车":
                 case "小货车":

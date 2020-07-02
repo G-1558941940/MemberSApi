@@ -2,6 +2,7 @@ package com.member.api.service;
 
 import com.member.api.dto.MemberEntryRecordDTO;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -16,5 +17,5 @@ public interface InparkingService {
      * @param memberId 会员id
      * @return 进场记录
      */
-    List<MemberEntryRecordDTO> getMemberEntryRecord(Integer memberId);
+    List<MemberEntryRecordDTO> getMemberEntryRecord(Integer memberId) throws ParseException;
 }
