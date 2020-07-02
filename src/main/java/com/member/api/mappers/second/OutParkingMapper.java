@@ -15,4 +15,12 @@ public interface OutParkingMapper {
      * @return
      */
     List<OutParking> OutParkRecord(@Param("Member_id") Integer Member_id, @Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
+
+    /**所有会员的出场记录
+     * @param pageSize
+     * @param Size
+     * @return
+     */
+    List<OutParking> FindAllOutParkRecord(@Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
 }
+

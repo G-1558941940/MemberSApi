@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface OutparkingService {
   List<OutParking> OutParkingRecord(Integer Member_id,Integer pageIndex,Integer pageSize);
+  List<OutParking> FindOutParkingRecord(Integer pageIndex,Integer pageSize);
 }

@@ -32,6 +32,23 @@ WHERE
 	o.carnumber IN ( SELECT carnumber FROM member_car_ref AS M INNER JOIN car_owner_car AS C ON M."car_id" = C.car_id WHERE M.member_id =#{Member_id} )
 	LIMIT #{pageSize} OFFSET #{Size}
     </select>
+    <select id="FindAllOutParkRecord" resultMap="OutParkingMap">
+         SELECT
+	o.cardserial,
+	o.outparking_id,
+	o.carnumber,
+	o.outtime,
+	o.outtype,
+	o.carnumberout,
+	o.intime,
+	o.addtime,
+	o.parking_id
+FROM
+	outparking AS o
+	LEFT JOIN car_owner_car AS C ON o.carnumber = C.carnumber
+	WHERE o.carnumber IS NOT NULL
+     LIMIT #{pageSize} OFFSET #{Size}
+    </select>
 
 
 </mapper>

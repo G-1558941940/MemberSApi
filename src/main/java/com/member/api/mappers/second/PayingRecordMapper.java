@@ -14,4 +14,5 @@ public interface PayingRecordMapper {
      * @return
      */
     List<PayRecord> PayingRecord(@Param("Member_id") Integer Member_id, @Param("pageSize") Integer pageSize, @Param("Size") Integer Size );
+
 }

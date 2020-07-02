@@ -19,19 +19,28 @@ import java.util.List;
 public class OutparkingController {
 @Autowired
 private OutparkingService OutparkingService;
-    @ApiOperation(value = "会员出场信息", httpMethod = "POST")
+    @ApiOperation(value = "指定会员出场信息", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name="Member_id",value = "会员信息"),
             @ApiImplicitParam(name = "pageSize", value = "每页长度"),
             @ApiImplicitParam(name = "pageIndex", value = "页码")
     })
     @PostMapping("/OutparkingRecord")
-    public List<OutParking> parkingRecord(Integer Member_id, Integer pageIndex, Integer pageSize) {
+    public List<OutParking> OutparkingRecord(Integer Member_id, Integer pageIndex, Integer pageSize) {
         System.out.println("Member_id = " + Member_id);
         System.out.println("pageIndex = " + pageIndex);
         System.out.println("pageSize = " + pageSize);
         //System.out.println(SecondService.parkingRecord(car_owner_id,pageIndex,pageSize));
         return OutparkingService.OutParkingRecord(Member_id,pageIndex,pageSize);
     }
+    @ApiOperation(value = "所有会员出场信息", httpMethod = "POST")
+    @ApiImplicitParams({
 
+            @ApiImplicitParam(name = "pageSize", value = "每页长度"),
+            @ApiImplicitParam(name = "pageIndex", value = "页码")
+    })
+    @PostMapping("/FindALLOutparkingRecord")
+    public List<OutParking> FindALLOutparkingRecord(Integer pageIndex, Integer pageSize){
+        return OutparkingService.FindOutParkingRecord(pageIndex,pageSize);
+    }
 }
