@@ -17,8 +17,29 @@
         <result column="parking_name" property="parking_name"/>
     </resultMap>
     <select id="PayingRecord" resultMap="PayRecordMap">
-        SELECT p.id,o.car_owner_id,o.carnumber,o.intime,o.outtime,p.payamount/100.0 as payamount,p.paidamount/100.0 as paidamount ,p.paymenttype,p.chargetime,p.close_optername,
-        p.close_accountno,p.parking_name,round(date_part('epoch', o.outtime - o.intime)::NUMERIC / 60) as parktime   FROM  outparking as o LEFT JOIN p_record_charge as p on p.intime=o.intime
-        where o.carnumber IS NOT NULL AND  p.carnumber=#{carnumber} AND O.outtime IS NOT NULL AND p.id IS NOT NULL
+        SELECT P
+	.ID,
+	o.car_owner_id,
+	o.carnumber,
+	o.intime,
+	o.outtime,
+	P.payamount / 100.0 AS payamount,
+	P.paidamount / 100.0 AS paidamount,
+	P.paymenttype,
+	P.chargetime,
+	P.close_optername,
+	P.close_accountno,
+	P.parking_name,
+	round( date_part( 'epoch', o.outtime - o.intime ) :: NUMERIC / 60 ) AS parktime
+FROM
+	outparking AS o
+	LEFT JOIN p_record_charge AS P ON P.intime = o.intime
+WHERE
+	o.carnumber IS NOT NULL
+	AND P.parking_name != '路内停车'
+	AND P.carnumber IN ( SELECT carnumber FROM member_car_ref AS M INNER JOIN car_owner_car AS C ON M."car_id" = C.car_id WHERE M.member_id = #{Member_id} )
+	AND O.outtime IS NOT NULL
+	AND P.ID IS NOT NULL
+	LIMIT #{pageSize} OFFSET #{Size}
     </select>
 </mapper>

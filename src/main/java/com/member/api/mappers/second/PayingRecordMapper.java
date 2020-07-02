@@ -8,10 +8,10 @@ import java.util.List;
 @Component
 public interface PayingRecordMapper {
     /**已经支付的订单
-     * @param CarNUmber
+     * @param Member_id
      * @param pageSize
      * @param Size
      * @return
      */
-    List<PayRecord> PayingRecord(@Param("CarNUmber") String CarNUmber, @Param("pageSize") Integer pageSize, @Param("Size") Integer Size );
+    List<PayRecord> PayingRecord(@Param("Member_id") Integer Member_id, @Param("pageSize") Integer pageSize, @Param("Size") Integer Size );
 }

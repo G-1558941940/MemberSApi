@@ -1,5 +1,26 @@
 package com.member.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
+
+import java.util.Date;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class NoPayRecord {
+    private String reserve2;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date intime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date outtime;
+    private Integer parktime;
+    private Float payamount;
+    private Float paidamount;
+    private Integer paymenttype;
+    private String parking_name;
+
 
 }

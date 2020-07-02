@@ -79,6 +79,7 @@ public class MemberController {
     @ApiOperation(value = "会员信息行数", httpMethod = "POST")
     @PostMapping("/MemberFindCount")
     public JSONObject MemberFindCount(){
+
         return FindMemberService.FindMemberCount();
     }
 
