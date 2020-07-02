@@ -13,8 +13,8 @@
 	mc.create_time
 FROM
 	month_card_car AS mc
-	LEFT JOIN car_owner_car AS C ON mc.car_id = C.car_id
-	LEFT JOIN member_car_ref AS mr ON mc.car_id = mr.car_id
+	INNER  JOIN car_owner_car AS C ON mc.car_id = C.car_id
+	INNER  JOIN member_car_ref AS mr ON mc.car_id = mr.car_id
 	WHERE mr.member_id IS NOT NULL
 	AND mr.member_id=#{Member_id}
     </select>
