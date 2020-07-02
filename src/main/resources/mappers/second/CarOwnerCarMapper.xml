@@ -2,9 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.member.api.mappers.second.CarOwnerCarMapper">
     <select id="selectPersonalVehicles" resultType="com.member.api.dto.PersonalVehiclesDTO">
-        select car.carnumber as carnumber, car."carColor" as carColor, car.carmode_nane as carmodeName
+        select  car.carnumber as carnumber,
+                car."carColor" as carColor,
+                car.carmode_nane as carmodeName,
+                mon.id as monId,
+                white.id as whiteId,
+                mon.time_end as timeEnd
         from offroad_parking.public.member_car_ref ref
                      left join offroad_parking.public.car_owner_car car on ref.car_id = car.car_id
-        where ref.member_id = #{memberId}
+                     LEFT JOIN offroad_parking.public.month_card_car mon on mon.car_id = car.car_id
+                     LEFT JOIN offroad_parking.public.white_list white on white.carnumber = car.carnumber
+        where ref.member_id = #{memberId} and case when mon.id is not null then mon.is_delete = false else 1=1 end
     </select>
 </mapper>
