@@ -17,12 +17,12 @@ public class FindMemberServiceimpl implements FindMemberService {
     @Autowired
     private MasterMapper MasterMapper;
     @Override
-    public List<Member> FindMember(Integer pageIndex,Integer pageSize) {
+    public List<Member> FindMember(String phone,Integer pageIndex,Integer pageSize) {
         Integer Size= (pageIndex - 1) * pageSize;
         log.info("每页长度->"+pageSize);
         log.info("跳过长度->"+Size);
-        log.info("会员信息->"+MasterMapper.FindMember(pageSize,Size));
-        return MasterMapper.FindMember(pageSize,Size);
+        log.info("会员信息->"+MasterMapper.FindMember(phone,pageSize,Size));
+        return MasterMapper.FindMember(phone,pageSize,Size);
     }
 
     @Override

@@ -42,6 +42,16 @@ public interface MasterMapper {
      * @return
      */
      Integer DeleteMember(@Param("member") Member member);
-     List<Member> FindMember(@Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
+
+    /**查找会员
+     * @param pageSize
+     * @param Size
+     * @return
+     */
+     List<Member> FindMember(@Param("phone") String phone, @Param("pageSize") Integer pageSize, @Param("Size") Integer Size);
+
+    /**会员数量
+     * @return
+     */
      Integer FindMemberCount();
 }

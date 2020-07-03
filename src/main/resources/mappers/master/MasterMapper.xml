@@ -66,20 +66,7 @@
          </where>
      </update>
     <update id="UpdatePassWord" parameterType="string">
-        <!-- update member
-         <set>
-             <if test="pay_password!=null and pay_password!=''">
-          pay_password=#{pay_password}
-         </if>
-         </set>
-         <where>
 
-             <if test="phone!=null and phone !=''">
-                 phone=#{phone}
-             </if>
-
-
-         </where>-->
         update member set pay_password=#{pay_password} where phone=#{phone}
     </update>
     <delete id="DeleteMember" parameterType="com.member.api.entity.Member">
@@ -97,7 +84,13 @@
         </where>
     </select>
     <select id="FindMember" resultMap="MemberRegister">
-        SELECT * FROM Member limit #{pageSize} offset #{Size}
+        SELECT * FROM Member
+        <where>
+        <if test="phone!=null and phone!=''">
+          phone=#{phone}
+        </if>
+        </where>
+        limit #{pageSize} offset #{Size}
     </select>
     <select id="FindMemberCount" resultType="java.lang.Integer">
         SELECT  COUNT(1) FROM Member
