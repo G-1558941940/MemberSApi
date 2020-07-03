@@ -19,7 +19,8 @@ public class MemberTwoServiceImpl implements MemberTwoService {
     }
 
     @Override
-    public Integer getMyWalletBalance(Integer id) {
-        return memberMapper.selectWalletMnyById(id);
+    public Double getMyWalletBalance(Integer id) {
+        Double money = memberMapper.selectWalletMnyById(id) / 100.00;
+        return money;
     }
 }

@@ -13,5 +13,5 @@ public interface MemberTwoService {
      * @auth panpan gao
      * @return 钱包余额
      */
-    Integer getMyWalletBalance(Integer id);
+    Double getMyWalletBalance(Integer id);
 }

@@ -28,12 +28,12 @@ public class MemberTwoController {
      * @param id 会员id
      */
     @GetMapping("/getMyWalletBalance")
-    public MyResult<Integer> getMyWalletBalance(Integer id){
+    public MyResult<Double> getMyWalletBalance(Integer id){
         log.info("进入-获取会员的钱包余额 开始");
         log.info("入参 id: " + id);
-        MyResult<Integer> myResult;
+        MyResult<Double> myResult;
         try {
-            Integer myWalletBalance = memberTwoService.getMyWalletBalance(id);
+            Double myWalletBalance = memberTwoService.getMyWalletBalance(id);
             myResult = new MyResult<>(0, "获取会员的钱包余额成功", myWalletBalance);
             log.info("获取会员的钱包余额成功 result ---> " + myResult);
         } catch (Exception e) {
