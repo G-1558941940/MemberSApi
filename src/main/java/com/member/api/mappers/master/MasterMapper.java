@@ -1,6 +1,7 @@
 package com.member.api.mappers.master;
 
 import com.member.api.entity.Member;
+import com.member.api.entity.OpenId;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -54,4 +55,5 @@ public interface MasterMapper {
      * @return
      */
      Integer FindMemberCount();
+     String FindMemberOpenId(@Param("Member_id") Integer Member_id);
 }

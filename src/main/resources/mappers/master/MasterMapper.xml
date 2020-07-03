@@ -95,5 +95,9 @@
     <select id="FindMemberCount" resultType="java.lang.Integer">
         SELECT  COUNT(1) FROM Member
         </select>
+
+    <select id="FindMemberOpenId" resultType="string">
+        SELECT wx_mini_open_id FROM member WHERE id=#{Member_id}
+    </select>
 </mapper>
         <!--#{id},#{wx_logo},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{},#{}-->

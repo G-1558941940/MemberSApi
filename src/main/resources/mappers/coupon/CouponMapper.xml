@@ -2,4 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--userMapper空间-->
 <mapper namespace="com.member.api.mappers.coupon.CouponMapper">
+
+    <select id="FindAllCoupon" resultType="com.member.api.entity.Coupon">
+         SELECT * FROM user_coupon where open_id=#{Open_id}
+    </select>
 </mapper>

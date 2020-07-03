@@ -1,9 +1,7 @@
 package com.member.api.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.member.api.entity.Car_owner;
 import com.member.api.entity.Member;
-import com.member.api.entity.OutParking;
 import com.member.api.service.FindMemberService;
 import com.member.api.service.MemberService;
 import com.member.api.service.SecondService;
