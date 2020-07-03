@@ -9,19 +9,32 @@ spring:
     datasource:
       url: jdbc:postgresql://localhost:5432/city_park
       username: postgres
-      password: sorft
+      password: root
       driver-class-name: org.postgresql.Driver
       #second 数据源配置
   second:
     datasource:
       url: jdbc:postgresql://localhost:5432/offroad_parking
       username: postgres
-      password: sorft
+      password: root
       driver-class-name: org.postgresql.Driver
-
   order:
     datasource:
       url: jdbc:postgresql://localhost:5432/order_manager
       username: postgres
-      password: sorft
+      password: root
       driver-class-name: org.postgresql.Driver
+  iot:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/iot
+      username: postgres
+      password: root
+      driver-class-name: org.postgresql.Driver
+logging:
+  level:
+    com.member.api: debug
+  file:
+    path: log/spring/
+  pattern:
+    console: "%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n"
+    file: "%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n"
