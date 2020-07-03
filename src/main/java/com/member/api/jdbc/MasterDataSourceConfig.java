@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 /**
  * @program: game_api
  * @description:
- * @author: Dading
+ * @author: chensiqi
  * @create: 2019-04-12 14:14
  * @version: 1.0
  **/

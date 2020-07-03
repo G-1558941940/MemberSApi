@@ -23,25 +23,25 @@ import javax.sql.DataSource;
 @Configuration
 // 扫描 Mapper 接口并容器管理
 @MapperScan(basePackages = SecondDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "secondSqlSessionFactory")
-public class SecondDataSourceConfig {
+public class CouponDataSourceConfig {
 
     // 精确到 cluster 目录，以便跟其他数据源隔离
-    static final String PACKAGE = "com.member.api.mappers.second";
-    static final String MAPPER_LOCATION = "classpath:mappers/second/*.xml";
+    static final String PACKAGE = "com.member.api.mappers.coupon";
+    static final String MAPPER_LOCATION = "classpath:mappers/coupon/*.xml";
 
-    @Value("${spring.second.datasource.url}")
+    @Value("${spring.coupon.datasource.url}")
     private String url;
 
-    @Value("${spring.second.datasource.username}")
+    @Value("${spring.coupon.datasource.username}")
     private String user;
 
-    @Value("${spring.second.datasource.password}")
+    @Value("${spring.coupon.datasource.password}")
     private String password;
 
-    @Value("${spring.second.datasource.driver-class-name}")
+    @Value("${spring.coupon.datasource.driver-class-name}")
     private String driverClass;
 
-    @Bean(name = "secondDataSource")
+    @Bean(name = "couponDataSource")
     public DataSource clusterDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driverClass);
@@ -51,18 +51,18 @@ public class SecondDataSourceConfig {
         return dataSource;
     }
 
-    @Bean(name = "secondTransactionManager")
+    @Bean(name = "couponTransactionManager")
     public DataSourceTransactionManager clusterTransactionManager() {
         return new DataSourceTransactionManager(clusterDataSource());
     }
 
-    @Bean(name = "secondSqlSessionFactory")
-    public SqlSessionFactory clusterSqlSessionFactory(@Qualifier("secondDataSource") DataSource clusterDataSource)
+    @Bean(name = "couponSqlSessionFactory")
+    public SqlSessionFactory clusterSqlSessionFactory(@Qualifier("couponDataSource") DataSource clusterDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(clusterDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources(SecondDataSourceConfig.MAPPER_LOCATION));
+                .getResources(CouponDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
     }
 }

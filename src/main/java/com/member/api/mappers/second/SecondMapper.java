@@ -12,7 +12,7 @@ import java.util.List;
 public interface SecondMapper {
 
     /**
-     * 查询会员信息
+     * 查询车主信息
      *
      * @param pageSize  每页长度
      * @param Size  跳过长度

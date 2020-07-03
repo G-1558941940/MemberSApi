@@ -8,5 +8,10 @@ import java.util.List;
 
 @Component
 public interface MonthCarMapper {
+
+  /**查找月卡车
+   * @param Member_id
+   * @return
+   */
   List<MontCar> FindMonthCar(@Param("Member_id") Integer Member_id);
 }

@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface FindMemberService {
-    List<Member> FindMember( Integer pageIndex,Integer pageSize);
+    List<Member> FindMember( String phone,Integer pageIndex,Integer pageSize);
     JSONObject FindMemberCount();
 }
